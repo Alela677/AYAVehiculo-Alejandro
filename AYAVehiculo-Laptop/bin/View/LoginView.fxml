@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" style="-fx-background-image: https://img.freepik.com/foto-gratis/fondo-borroso-oscuro-abstracto-color-textura-degradado-suave-patron-sitio-web-brillante-brillante-encabezado-banner-o-imagen-arte-grafico-barra-lateral_1258-83087.jpg?w=996&amp;t=st=1668305264~exp=1668305864~hmac=ef7a42c23cbbfedb02891e0ca38d8a35bd1a97d17c55c37ca99446b88575c40d;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.LoginViewControlador">
+   <children>
+      <ImageView fitHeight="700.0" fitWidth="700.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Downloads/fondo.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="128.0" layoutY="140.0" prefHeight="502.0" prefWidth="445.0" style="-fx-background-color: lightskyblue; -fx-background-radius: 25;" stylesheets="@application.css" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="128.0" AnchorPane.rightAnchor="127.0" AnchorPane.topAnchor="140.0">
+         <children>
+            <Label layoutX="98.0" layoutY="191.0" text="Username" />
+            <TextField layoutX="98.0" layoutY="208.0" prefHeight="25.0" prefWidth="250.0" />
+            <Label layoutX="98.0" layoutY="243.0" text="Password" />
+            <TextField layoutX="98.0" layoutY="260.0" prefHeight="25.0" prefWidth="250.0" />
+            <Button layoutX="98.0" layoutY="317.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Login" />
+            <Button layoutX="228.0" layoutY="317.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Cancel" />
+            <Label layoutX="184.0" layoutY="137.0" prefHeight="32.0" prefWidth="79.0" text="LOGIN" textAlignment="CENTER">
+               <font>
+                  <Font name="Cambria Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="231.0" layoutY="285.0" text="Recuperar Contraseña" />
+            <ImageView fx:id="insta" fitHeight="32.0" fitWidth="32.0" layoutX="109.0" layoutY="403.0" onMouseClicked="#instagram" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/insta.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="face" fitHeight="38.0" fitWidth="38.0" layoutX="199.0" layoutY="400.0" onMouseClicked="#facebook" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/face.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="twet" fitHeight="32.0" fitWidth="32.0" layoutX="297.0" layoutY="403.0" onMouseClicked="#twitter" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/twet.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <Pane layoutX="250.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: blue; -fx-background-radius: 100;">
+         <children>
+            <ImageView fitHeight="129.0" fitWidth="143.0" layoutX="29.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Documents/Flutter/Drawer/flutter_application_2/assets/images/flutterIcon.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+   </children>
+</AnchorPane>

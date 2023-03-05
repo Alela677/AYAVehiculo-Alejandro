@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="1346.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ResumenVentasC">
+   <children>
+      <TableView fx:id="tablaVentas" layoutX="259.0" layoutY="24.0" prefHeight="463.0" prefWidth="674.0" stylesheets="@../estilos/tabla.css">
+         <columns>
+            <TableColumn fx:id="columnIdVenta" prefWidth="112.0" text="ID Venta" />
+            <TableColumn fx:id="columnVehiculoMarca" prefWidth="112.0" text="Marca Vehiculo" />
+            <TableColumn fx:id="columnVehiculoModelo" prefWidth="112.0" text="Modelo Vehiculo" />
+            <TableColumn fx:id="columnVendedor" prefWidth="112.0" text="Vendedor" />
+            <TableColumn fx:id="columCliente" prefWidth="112.0" text="Cliente" />
+            <TableColumn fx:id="columnFechaCompra" prefWidth="112.0" text="Fecha Compra" />
+         </columns>
+      </TableView>
+      <Label layoutX="14.0" layoutY="14.0" text="Resumen de ventas">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Line endX="92.0" endY="-78.0" layoutX="142.0" layoutY="125.0" startX="92.0" startY="357.0" />
+      <TableView fx:id="tablaVendedor" layoutX="1000.0" layoutY="24.0" prefHeight="463.0" prefWidth="318.0" stylesheets="@../estilos/tabla.css">
+        <columns>
+          <TableColumn fx:id="idVendedor" prefWidth="100.0" text="ID Vendedor" />
+          <TableColumn fx:id="nombreVendedor" prefWidth="115.0" text="Nombre Vendedor" />
+            <TableColumn fx:id="totalVendedor" prefWidth="101.0" text="Total Vendido" />
+        </columns>
+      </TableView>
+      <Line endX="-36.0" endY="371.0" layoutX="1000.0" layoutY="110.0" startX="-36.0" startY="-82.0" />
+      <Button fx:id="buttonNombre" layoutX="14.0" layoutY="208.0" mnemonicParsing="false" onMousePressed="#ordenAlfabetico" prefHeight="25.0" prefWidth="206.0" styleClass="botones" stylesheets="@../estilos/botones.css" text="Nombre vendedor" />
+      <Label layoutX="14.0" layoutY="66.0" text="Odenar por:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="103.0" text="Identificador">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="16.0" layoutY="181.0" text="Alfabeticamente">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="16.0" layoutY="282.0" text="Fecha compra">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonAño" layoutX="14.0" layoutY="309.0" mnemonicParsing="false" onMousePressed="#ordenAño" prefHeight="25.0" prefWidth="206.0" styleClass="botones" stylesheets="@../estilos/botones.css" text="Año" />
+      <Button fx:id="buttonMes" layoutX="14.0" layoutY="344.0" mnemonicParsing="false" onMousePressed="#ordenMes" prefHeight="25.0" prefWidth="206.0" styleClass="botones" stylesheets="@../estilos/botones.css" text="Mes" />
+      <Button fx:id="buttonDia" layoutX="14.0" layoutY="378.0" mnemonicParsing="false" onMousePressed="#ordenFecha" prefHeight="25.0" prefWidth="206.0" styleClass="botones" stylesheets="@../estilos/botones.css" text="Fecha de compra" />
+      <Button fx:id="buttonVenta" layoutX="12.0" layoutY="137.0" mnemonicParsing="false" onMousePressed="#ordenVenta" prefHeight="25.0" prefWidth="206.0" styleClass="botones" stylesheets="@../estilos/botones.css" text="ID ventas" />
+    <Button fx:id="buttonCliente" layoutX="14.0" layoutY="240.0" mnemonicParsing="false" onMousePressed="#ordenNombreCliente" prefHeight="25.0" prefWidth="206.0" styleClass="botones" stylesheets="@../estilos/botones.css" text="Nombre cliente" />
+   </children>
+</AnchorPane>

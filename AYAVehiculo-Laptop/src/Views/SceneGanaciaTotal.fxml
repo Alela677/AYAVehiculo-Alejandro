@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="1346.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GanaciaTotalC">
+   <children>
+      <Label layoutX="14.0" layoutY="27.0" text="Ganancia Total">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tablaVentaGanacias" layoutX="203.0" layoutY="30.0" prefHeight="464.0" prefWidth="356.0" stylesheets="@../estilos/tabla.css">
+        <columns>
+          <TableColumn fx:id="colIdV" prefWidth="89.0" text="ID Venta" />
+          <TableColumn fx:id="colMarcaV" prefWidth="149.0" text="Coche Venta" />
+            <TableColumn fx:id="colPrecioV" prefWidth="115.0" text="Precio Venta" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tablaReparaGanancia" layoutX="961.0" layoutY="21.0" prefHeight="464.0" prefWidth="356.0" stylesheets="@../estilos/tabla.css">
+        <columns>
+          <TableColumn fx:id="colIdR" prefWidth="97.0" text="ID Reparación" />
+          <TableColumn fx:id="colFechaR" prefWidth="137.0" text="Fecha Reparación" />
+            <TableColumn fx:id="colPrecioR" prefWidth="119.0" text="Precio Reparacion" />
+        </columns>
+      </TableView>
+      <Pane layoutX="599.0" layoutY="95.0" prefHeight="396.0" prefWidth="331.0" style="-fx-background-color: lightblue;" styleClass="bordespaneles" stylesheets="@../estilos/paneles.css">
+         <children>
+            <Circle layoutX="166.0" radius="79.0" stroke="BLACK" strokeType="INSIDE" />
+            <ImageView fitHeight="121.0" fitWidth="183.0" layoutX="77.0" layoutY="-59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo.PNG" />
+               </image>
+            </ImageView>
+            <Label layoutX="16.0" layoutY="113.0" text="Total Ventas: ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="18.0" layoutY="198.0" text="Total Reparaciones: ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="19.0" layoutY="282.0" text="Ganancia Total: ">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelTotalVenta" layoutX="18.0" layoutY="140.0" prefHeight="27.0" prefWidth="151.0" text="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelTotalReparaciones" layoutX="18.0" layoutY="225.0" prefHeight="27.0" prefWidth="151.0" text="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelGananciaTotal" layoutX="19.0" layoutY="317.0" prefHeight="35.0" prefWidth="181.0" text="0.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Line endX="11.0" endY="346.0" layoutX="181.0" layoutY="146.0" startX="11.0" startY="-113.0" />
+      <Line endX="11.0" endY="345.0" layoutX="557.0" layoutY="146.0" startX="11.0" startY="-115.0" />
+      <Line endX="11.0" endY="345.0" layoutX="943.0" layoutY="145.0" startX="11.0" startY="-116.0" />
+      <Line endX="11.0" endY="345.0" layoutX="1323.0" layoutY="148.0" startX="11.0" startY="-116.0" />
+   </children>
+</AnchorPane>
