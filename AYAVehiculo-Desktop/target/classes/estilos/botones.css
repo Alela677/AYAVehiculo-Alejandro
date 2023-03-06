@@ -1,0 +1,19 @@
+.botones{
+	-fx-background-color: white;
+	-fx-alignment: CENTER_LEFT;
+}
+
+.botonesMenu{
+	-fx-background-color: white;
+}
+
+.botonesMenu:hover{
+	-fx-border-color: #00397A;
+    -fx-border-width: 2;
+    -fx-border-radius:2.0;
+}
+.botones:hover{
+	-fx-border-color: #00397A;
+    -fx-border-width: 2;
+    -fx-border-radius:2.0;
+}

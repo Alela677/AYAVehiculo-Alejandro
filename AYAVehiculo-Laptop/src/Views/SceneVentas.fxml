@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="1346.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.VentaC">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="1346.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.VentaC">
    <children>
       <Label layoutX="33.0" layoutY="29.0" text="Ventas" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="22.0">
          <font>
@@ -17,16 +17,21 @@
       </Label>
       <Pane fx:id="paneStock" layoutX="760.0" layoutY="65.0" onMouseClicked="#vistaStockVehiculos" prefHeight="376.0" prefWidth="321.0" style="-fx-background-color: lightblue;" styleClass="paneles" stylesheets="@../estilos/paneles.css">
          <children>
-            <Label layoutX="14.0" layoutY="199.0" text="Stock de vehiculos">
+            <Label layoutX="14.0" layoutY="188.0" text="Stock de vehiculos">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="177.0" fitWidth="321.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="177.0" fitWidth="321.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/stock.jpg" />
                </image>
             </ImageView>
+            <Label layoutX="14.0" layoutY="234.0" text="- Stock de vehiculos diponibles">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
          </children>
          <effect>
             <DropShadow />
@@ -34,16 +39,21 @@
       </Pane>
       <Pane fx:id="paneResumen" layoutX="250.0" layoutY="65.0" onMouseClicked="#vistaResumen" prefHeight="376.0" prefWidth="321.0" style="-fx-background-color: lightblue;" styleClass="paneles" stylesheets="@../estilos/paneles.css">
          <children>
-            <Label layoutX="14.0" layoutY="201.0" text="Resumen de ventas">
+            <Label layoutX="14.0" layoutY="190.0" text="Resumen de ventas">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="195.0" fitWidth="321.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="177.0" fitWidth="321.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/grafico.jpg" />
                </image>
             </ImageView>
+            <Label layoutX="14.0" layoutY="232.0" text="- Resumen ventas realizadas">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
          </children>
          <effect>
             <DropShadow />

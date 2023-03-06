@@ -1,0 +1,18 @@
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    -fx-background-color: #00397A; 
+}
+.table-view .column-header .label{
+   -fx-text-fill: white;
+   -fx-font-weight: bold; 
+   -fx-alignment: CENTER_LEFT;
+}
+
+.table-row-cell:selected {
+   -fx-background-color:  lightblue; 
+   -fx-text-background-color:#00397A;
+   
+      
+}
+
+

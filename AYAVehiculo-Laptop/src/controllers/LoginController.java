@@ -25,6 +25,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import models.Empleados;
 import models.HibernateUtil;
+import utils.Alertas;
 import utils.HashPassword;
 
 public class LoginController implements Initializable {
@@ -65,7 +66,7 @@ public class LoginController implements Initializable {
 		boolean registrado = false;
 
 		try {
-			comprobar = gestorEmpleados.empleadoDepartamentoLogin("JEFE", nombre, passwd);
+			comprobar = gestorEmpleados.empleadoDepartamentoLogin("JEFE", nombre, HashPassword.convertirSHA256(passwd));
 			if (comprobar.getNombre().equalsIgnoreCase(nombre)
 					&& comprobar.getContraseña().equals(HashPassword.convertirSHA256(passwd))) {
 
@@ -74,7 +75,7 @@ public class LoginController implements Initializable {
 			}
 
 		} catch (NullPointerException e) {
-			alertaError();
+		Alertas.alertaErrorLogin();
 		}
 
 		if (registrado == true) {
@@ -89,8 +90,6 @@ public class LoginController implements Initializable {
 			stage.show();
 			this.stage.close();
 
-		} else {
-			alertaError();
 		}
 	}
 
@@ -150,13 +149,7 @@ public class LoginController implements Initializable {
 		}
 	}
 
-	public static void alertaError() {
-		Alert alert = new Alert(Alert.AlertType.ERROR);
-		alert.setTitle("Error");
-		alert.setContentText("Usuario incorrecto");
-		alert.showAndWait();
-
-	}
+	
 
 	public void setStage(Stage primaryStage) {
 		stage = primaryStage;

@@ -18,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -29,15 +30,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import models.Empleados;
 import models.HibernateUtil;
+import utils.Alertas;
 import utils.GuardarImagen;
 import utils.HashPassword;
+import utils.ValidacionFormulario;
 
 public class CrearEmpleadoC implements Initializable {
 
 	private Session sesion = HibernateUtil.getSession();
 	EmpleadosDAO gestorEmpleados = new EmpleadosDAO(sesion);
-
-	
 
 	@FXML
 	private Button buscarImagen;
@@ -70,19 +71,17 @@ public class CrearEmpleadoC implements Initializable {
 
 	@FXML
 	void buscarImagen(MouseEvent event) throws Exception {
-		
+
 		FileChooser filechooser = new FileChooser();
-									
-			
-			File fichero = filechooser.showOpenDialog(LoginController.stage);	 // Guardamos en la variable fichero el archivo seleccionado
 
-			if (fichero.getName().contains(".jpg") || fichero.getName().contains(".png")
-					|| fichero.getName().contains(".jpeg")) {
-				txtArchivoImg.setText(fichero.getName());
-				GuardarImagen.guardarImagen(fichero);
-			}
+		File fichero = filechooser.showOpenDialog(LoginController.stage); // Guardamos en la variable fichero el archivo
+																			// seleccionado
 
-		
+		if (fichero.getName().contains(".jpg") || fichero.getName().contains(".png")
+				|| fichero.getName().contains(".jpeg")) {
+			txtArchivoImg.setText(fichero.getName());
+			GuardarImagen.guardarImagen(fichero);
+		}
 
 	}
 
@@ -107,6 +106,7 @@ public class CrearEmpleadoC implements Initializable {
 
 	@FXML
 	void crearEmpleado(MouseEvent event) throws Exception {
+		ValidacionFormulario valida = new ValidacionFormulario();
 
 		String nombre = txtNombre.getText();
 		String apellidos = txtApellidos.getText();
@@ -121,10 +121,13 @@ public class CrearEmpleadoC implements Initializable {
 			imagen = "user.jpeg";
 		}
 		Empleados nuevoEmpleado = new Empleados(nombre, apellidos, dni, departamento, cargo, fechaAlta, imagen,
-				HashPassword.convertirSHA256(contraseña));
+				contraseña);
 
-		gestorEmpleados.insert(nuevoEmpleado);
-		actualizarPagina();
+		if (valida.validaFormulario(nuevoEmpleado)) {
+			nuevoEmpleado.setContraseña(HashPassword.convertirSHA256(contraseña));
+			gestorEmpleados.insert(nuevoEmpleado);
+			actualizarPagina();
+		}
 	}
 
 	private void rellenarCamposCargo() {
