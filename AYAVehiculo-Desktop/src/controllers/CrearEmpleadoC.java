@@ -129,9 +129,7 @@ public class CrearEmpleadoC implements Initializable {
 			nuevoEmpleado.setContraseña(HashPassword.convertirSHA256(contraseña));
 			gestorEmpleados.insert(nuevoEmpleado);
 			actualizarPagina();
-		} else {
-			Alertas.alertaVacio();
-		}
+		} 
 
 	}
 
