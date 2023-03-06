@@ -139,8 +139,8 @@ public class CrearEmpleadoC implements Initializable {
 
 	private void rellenarCamposDepartamento() {
 		ObservableList<String> items = FXCollections.observableArrayList();
-		items.add("Ventas");
-		items.add("Mecanico");
+		items.add("VENTAS");
+		items.add("MECANICOS");
 		comboDepartamento.setItems(items);
 	}
 
