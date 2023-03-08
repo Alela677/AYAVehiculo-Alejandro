@@ -30,8 +30,10 @@ import models.HibernateUtil;
 import utils.GridpanelEmpleados;
 
 public class VerEmpleadosC implements Initializable {
-
+	
+	// Sesion de hibernate conla base de datos
 	Session sesion = HibernateUtil.getSession();
+	// Gestion de los empleados con la base de datos
 	EmpleadosDAO gestorEmpleados = new EmpleadosDAO(sesion);
 
 	private GridpanelEmpleados grid = new GridpanelEmpleados();
@@ -64,13 +66,17 @@ public class VerEmpleadosC implements Initializable {
 
 	@FXML
 	private Button buttonBuquedaApellidos;
-
+	
+	/**
+	 * Metodo que inicializa la vista con los parametros introducidos
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		int fila = 0;
 		int columna = 0;
-
+		
+		// Recoge los datos de los empleados en la base de datos y los muestra en la tabla
 		try {
 			listaEmpleados = gestorEmpleados.searchAll("Empleados");
 			paneles = grid.crearPaneles(listaEmpleados);
@@ -81,7 +87,8 @@ public class VerEmpleadosC implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
+		// Rellena los campos en el combobox cargos y departamentos
 		rellenarCamposDepartamento();
 		rellenarCamposCargo();
 
@@ -98,21 +105,31 @@ public class VerEmpleadosC implements Initializable {
 		buttonBuqueda.setGraphic(view2);
 		buttonBuquedaApellidos.setGraphic(view);
 	}
-
+	
+	/**
+	 * Metodo que rellena los campos departaamento con lo que tenga disponibles en la base de datos
+	 */
 	private void rellenarCamposDepartamento() {
 		List<String> departamentos = gestorEmpleados.traerValoresColumnas("departamento");
 		departamentos = departamentos.stream().distinct().collect(Collectors.toList());
 		ObservableList<String> items = FXCollections.observableArrayList(departamentos);
 		comboBoxDepartamentos.setItems(items);
 	}
-
+	
+	/**
+	 * Metodo que rellena los cargos con lo que tengas disponibles en la base de datos
+	 */
 	private void rellenarCamposCargo() {
 		List<String> cargos = gestorEmpleados.traerValoresColumnas("cargo");
 		cargos = cargos.stream().distinct().collect(Collectors.toList());
 		ObservableList<String> items = FXCollections.observableArrayList(cargos);
 		comboBoxCargo.setItems(items);
 	}
-
+	
+	/**
+	 * Metodo que busca empleado por nombre y los muestra
+	 * @throws IOException
+	 */
 	@FXML
 	void buscarEmpleadoNombre(MouseEvent event) throws IOException {
 		limpiarListas();
@@ -121,7 +138,11 @@ public class VerEmpleadosC implements Initializable {
 		nuevoGrid = grid.crearGridPane(columna, fila, paneles);
 		borderPaneEmpleados.setCenter(nuevoGrid);
 	}
-
+	
+	/**
+	 * Metodo que busca empleado por apellidos y los muestra
+	 * @throws IOException
+	 */
 	@FXML
 	void buscarEmpleadoApellidos(MouseEvent event) throws IOException {
 		limpiarListas();
@@ -130,7 +151,12 @@ public class VerEmpleadosC implements Initializable {
 		nuevoGrid = grid.crearGridPane(columna, fila, paneles);
 		borderPaneEmpleados.setCenter(nuevoGrid);
 	}
-
+	
+	/**
+	 * Metodo que filtra los empleados por deparamento
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void filtrarPorDepartamento(ActionEvent event) throws IOException {
 		limpiarListas();
@@ -141,7 +167,12 @@ public class VerEmpleadosC implements Initializable {
 		borderPaneEmpleados.setCenter(nuevoGrid);
 
 	}
-
+	
+	/**
+	 * Metodo que filtra los empleados por cargo
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void filtrarCargo(ActionEvent event) throws IOException {
 		limpiarListas();
@@ -150,7 +181,10 @@ public class VerEmpleadosC implements Initializable {
 		nuevoGrid = grid.crearGridPane(columna, fila, paneles);
 		borderPaneEmpleados.setCenter(nuevoGrid);
 	}
-
+	
+	/**
+	 * Metodo que limpia las listas 
+	 */
 	private static void limpiarListas() {
 		listaEmpleados.clear();
 		paneles.clear();

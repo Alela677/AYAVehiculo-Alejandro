@@ -22,8 +22,9 @@ import models.TablaVendedor;
 import models.Venta;
 
 public class ResumenVentasC implements Initializable {
-
+	// Sesion de hibernate con la base de datos
 	private Session sesion = HibernateUtil.getSession();
+	// Gestion de ventas con la base de datos
 	VentaDAO gestorVentas = new VentaDAO(sesion);
 
 	private static List<Venta> listaVentas = new ArrayList<Venta>();
@@ -63,7 +64,11 @@ public class ResumenVentasC implements Initializable {
 
 	@FXML
 	private TableColumn<TablaVendedor, Long> totalVendedor;
-
+	
+	/**
+	 * Metodo que ordena la tabla por fechas
+	 * @param event
+	 */
 	@FXML
 	void ordenFecha(MouseEvent event) {
 		tablaVentas.getItems().clear();
@@ -71,7 +76,11 @@ public class ResumenVentasC implements Initializable {
 		ventasLista = FXCollections.observableArrayList(listaVentas);
 		añadirFilasVentas(ventasLista);
 	}
-
+	
+	/**
+	 * Metodo que ordena la tabla por año
+	 * @param event
+	 */
 	@FXML
 	void ordenAño(MouseEvent event) {
 		tablaVentas.getItems().clear();
@@ -79,7 +88,11 @@ public class ResumenVentasC implements Initializable {
 		ventasLista = FXCollections.observableArrayList(listaVentas);
 		añadirFilasVentas(ventasLista);
 	}
-
+	
+	/**
+	 * Metodoq que ordena la tabla por mes
+	 * @param event
+	 */
 	@FXML
 	void ordenMes(MouseEvent event) {
 		tablaVentas.getItems().clear();
@@ -87,7 +100,11 @@ public class ResumenVentasC implements Initializable {
 		ventasLista = FXCollections.observableArrayList(listaVentas);
 		añadirFilasVentas(ventasLista);
 	}
-
+	
+	/**
+	 * Metodo que ordena alfabeticamente los nombre de los clientes
+	 */
+	
 	@FXML
 	void ordenNombreCliente(MouseEvent event) {
 		tablaVentas.getItems().clear();
@@ -95,7 +112,11 @@ public class ResumenVentasC implements Initializable {
 		ventasLista = FXCollections.observableArrayList(listaVentas);
 		añadirFilasVentas(ventasLista);
 	}
-
+	
+	/**
+	 * Metodo que ordena alfabeticamente los nombre de los empleados
+	 * @param event
+	 */
 	@FXML
 	void ordenAlfabetico(MouseEvent event) {
 		tablaVentas.getItems().clear();
@@ -103,7 +124,11 @@ public class ResumenVentasC implements Initializable {
 		ventasLista = FXCollections.observableArrayList(listaVentas);
 		añadirFilasVentas(ventasLista);
 	}
-
+	
+	/**
+	 * Metodo que ordena por id de ventas
+	 * @param event
+	 */
 	@FXML
 	void ordenVenta(MouseEvent event) {
 		tablaVentas.getItems().clear();
@@ -111,7 +136,10 @@ public class ResumenVentasC implements Initializable {
 		ventasLista = FXCollections.observableArrayList(listaVentas);
 		añadirFilasVentas(ventasLista);
 	}
-
+	
+	/**
+	 * Metodo que incializa la vista con los parametro introducidos
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -122,12 +150,17 @@ public class ResumenVentasC implements Initializable {
 		columnasResizable(false);
 
 	}
-
+	
+	/**
+	 * Metodo que muestra los datos en la vista ranking vendedor
+	 */
 	private void añadirFilasVendedor() {
-
+		
+		// Recoge los datos de la base de datos para el ranking de vendedor
 		vendedorList = gestorVentas.consultarRankingVendedor();
 		listaVendedor = FXCollections.observableArrayList();
-
+		
+		// Crea objeto para la tabla del ranking
 		for (Object[] vendedor : vendedorList) {
 			listaVendedor.add(new TablaVendedor((int) vendedor[0], (String) vendedor[1], (long) vendedor[2]));
 
@@ -136,9 +169,13 @@ public class ResumenVentasC implements Initializable {
 		idVendedor.setCellValueFactory(new PropertyValueFactory<>("id"));
 		nombreVendedor.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 		totalVendedor.setCellValueFactory(new PropertyValueFactory<>("total"));
-		tablaVendedor.setItems(listaVendedor);
+		tablaVendedor.setItems(listaVendedor); // Muestra los valores de los objetos en la tabla
 	}
-
+	
+	/**
+	 * Metodo que carga los datos de la ventas en la tabla
+	 * @param ventasLista
+	 */
 	private void añadirFilasVentas(ObservableList<Venta> ventasLista) {
 
 		columnIdVenta.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -149,7 +186,11 @@ public class ResumenVentasC implements Initializable {
 		columnFechaCompra.setCellValueFactory(new PropertyValueFactory<>("fechaVenta"));
 		tablaVentas.getItems().addAll(ventasLista);
 	}
-
+	
+	/**
+	 * Metodod que vulve las columnas resizable segun la opcion
+	 * @param opc Opcion true o false
+	 */
 	private void columnasResizable(boolean opc) {
 
 		columCliente.setResizable(opc);

@@ -29,9 +29,12 @@ import utils.Alertas;
 import utils.HashPassword;
 
 public class LoginController implements Initializable {
+	
+	// Sesion de hibernate con la base de datos
 	private Session sesion = HibernateUtil.getSession();
+	// Gestion de los empledos con la base de datos
 	EmpleadosDAO gestorEmpleados = new EmpleadosDAO(sesion);
-
+	
 	public static BorderPane root;
 	public static Stage stage;
 
@@ -57,29 +60,38 @@ public class LoginController implements Initializable {
 	private TextField txtUser;
 
 	private Empleados comprobar;
-
+	
+	/**
+	 * Metodo que muestra la vista del login 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void logeo(MouseEvent event) throws IOException {
-
+		
+		// Usuario y paswrod que introduce el usuario
 		String nombre = txtUser.getText();
 		String passwd = txtPassword.getText();
 		boolean registrado = false;
-
+		
+		// Comprueba que el usuario y la contraseña const en la base de datos
 		try {
 			comprobar = gestorEmpleados.empleadoDepartamentoLogin("JEFE", nombre,HashPassword.convertirSHA256(passwd));
 			if (comprobar.getNombre().equalsIgnoreCase(nombre)
 					&& comprobar.getContraseña().equals(HashPassword.convertirSHA256(passwd))) {
-
+			
+			// Si esta registrado e verdadero 
 			registrado = true;
 
 			}
 
 		} catch (NullPointerException e) {
-			Alertas.alertaErrorLogin();
+			Alertas.alertaErrorLogin();// Si no esta registrado muestra una alerta
 		}
-
+		
+		// Si esta registrado muestra la vista de la aplicacion
 		if (registrado == true) {
-
+			
 			FXMLLoader loade = new FXMLLoader(getClass().getResource("/views/PrincipalView.fxml"));
 			root = loade.load();
 			PrincipalC control = loade.getController();
@@ -92,12 +104,20 @@ public class LoginController implements Initializable {
 
 		} 
 	}
-
+	
+	/**
+	 * Metod de salida de la aplicacion
+	 * @param event
+	 */
 	@FXML
 	void salir(MouseEvent event) {
 		Platform.exit();
 	}
-
+	
+	/**
+	 * Metodo que nos redirige a la pagina web de facebook
+	 * @param event
+	 */
 	@FXML
 	void webFacebook(MouseEvent event) {
 		URL url = null;
@@ -115,6 +135,10 @@ public class LoginController implements Initializable {
 		}
 	}
 
+	/**
+	 * Metodo que nos redirige a la pagina web de instagram
+	 * @param event
+	 */
 	@FXML
 	void webInstagram(MouseEvent event) {
 		URL url = null;
@@ -132,6 +156,10 @@ public class LoginController implements Initializable {
 		}
 	}
 
+	/**
+	 * Metodo que nos redirige a la pagina web de twitter
+	 * @param event
+	 */
 	@FXML
 	void webTwitter(MouseEvent event) {
 		URL url = null;
@@ -155,7 +183,10 @@ public class LoginController implements Initializable {
 		stage = primaryStage;
 
 	}
-
+	
+	/**
+	 * Metodo que inicializa la vista con el usuario y el pssword del jefe
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		txtUser.setText("FRANCISCO");

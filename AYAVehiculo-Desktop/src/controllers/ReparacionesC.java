@@ -21,8 +21,10 @@ import models.Reparacion;
 import models.TablaRankingMecanico;
 
 public class ReparacionesC implements Initializable {
-
+	
+	// Sesion de hibernate con la base de datos
 	private Session sesion = HibernateUtil.getSession();
+	// Gestion de la reparacion con la base de datos
 	ReparacionDAO gestorReparacion = new ReparacionDAO(sesion);
 
 	List<Reparacion> listaReparaciones = new ArrayList<Reparacion>();
@@ -63,7 +65,10 @@ public class ReparacionesC implements Initializable {
 
 	@FXML
 	private TableColumn<TablaRankingMecanico, Integer> colReparacinoesMecanicos;
-
+	
+	/**
+	 * Metodo que incializa la vista con los parametros introducidos
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -74,7 +79,11 @@ public class ReparacionesC implements Initializable {
 		añadirFilasRanking();
 		columnasResizable(false);
 	}
-
+	
+	/**
+	 * Metodo que añade los datos de las ventas a la tabla de ventas
+	 * @param ventasLista
+	 */
 	private void añadirFilasReparaciones(ObservableList<Reparacion> ventasLista) {
 		coID.setCellValueFactory(new PropertyValueFactory<>("idReparacion"));
 		colMecanico.setCellValueFactory(new PropertyValueFactory<>("nombreMecanico"));
@@ -82,14 +91,18 @@ public class ReparacionesC implements Initializable {
 		colPieza.setCellValueFactory(new PropertyValueFactory<>("pieza"));
 		colCoste.setCellValueFactory(new PropertyValueFactory<>("coste"));
 		colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
-		tablaReparaciones.getItems().addAll(ventasLista);
+		tablaReparaciones.getItems().addAll(ventasLista); // Inserta lo valores de las ventas en la tabla
 	}
-
+	
+	/**
+	 * Metodo que añade los valores del ranking a la tabla
+	 */
 	private void añadirFilasRanking() {
-
+		// Recoge los valores de las ventas de cada empleado
 		listaRanking = gestorReparacion.consultarRankingReparacion();
 		rankingMecanico = FXCollections.observableArrayList();
-
+		
+		// Crea objeto para la tabla
 		for (Object[] objects : listaRanking) {
 			rankingMecanico.add(new TablaRankingMecanico((int) objects[0], (String) objects[1], (long) objects[2]));
 		}
@@ -97,9 +110,13 @@ public class ReparacionesC implements Initializable {
 		colIdMencanico.setCellValueFactory(new PropertyValueFactory<>("id"));
 		colNombreMecanico.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 		colReparacinoesMecanicos.setCellValueFactory(new PropertyValueFactory<>("totalReparacion"));
-		tablaRanking.getItems().addAll(rankingMecanico);
+		tablaRanking.getItems().addAll(rankingMecanico); // Muestra los valores de lo objeto en la tabla
 	}
-
+	
+	/**
+	 * Metodo que actuliza el estado de resizable o no 
+	 * @param opc Opcion true o false
+	 */
 	private void columnasResizable(boolean opc) {
 		colCoste.setResizable(opc);
 		coID.setResizable(opc);
@@ -109,7 +126,11 @@ public class ReparacionesC implements Initializable {
 		colPieza.setResizable(opc);
 
 	}
-
+	
+	/**
+	 * Metodo que ordena las reparaciones por años
+	 * @param event
+	 */
 	@FXML
 	void ordenAño(MouseEvent event) {
 		tablaReparaciones.getItems().clear();
@@ -117,7 +138,11 @@ public class ReparacionesC implements Initializable {
 		reparaciones = FXCollections.observableArrayList(listaReparaciones);
 		añadirFilasReparaciones(reparaciones);
 	}
-
+	
+	/**
+	 * Metodo que ordena las reparaciones por fecha
+	 * @param event
+	 */
 	@FXML
 	void ordenFechas(MouseEvent event) {
 		tablaReparaciones.getItems().clear();
@@ -125,7 +150,11 @@ public class ReparacionesC implements Initializable {
 		reparaciones = FXCollections.observableArrayList(listaReparaciones);
 		añadirFilasReparaciones(reparaciones);
 	}
-
+	
+	/**
+	 * Metodo que ordena las reparaciones por id de reparacion
+	 * @param event
+	 */
 	@FXML
 	void ordenId(MouseEvent event) {
 		tablaReparaciones.getItems().clear();
@@ -133,7 +162,11 @@ public class ReparacionesC implements Initializable {
 		reparaciones = FXCollections.observableArrayList(listaReparaciones);
 		añadirFilasReparaciones(reparaciones);
 	}
-
+	
+	/**
+	 * Metodo que ordena las reparaciones por nombre mecanico
+	 * @param event
+	 */
 	@FXML
 	void ordenMecanico(MouseEvent event) {
 		tablaReparaciones.getItems().clear();
@@ -141,7 +174,11 @@ public class ReparacionesC implements Initializable {
 		reparaciones = FXCollections.observableArrayList(listaReparaciones);
 		añadirFilasReparaciones(reparaciones);
 	}
-
+	
+	/**
+	 * Metodo que ordena las reparaciones por el mes
+	 * @param event
+	 */
 	@FXML
 	void ordenMes(MouseEvent event) {
 		tablaReparaciones.getItems().clear();
@@ -149,7 +186,11 @@ public class ReparacionesC implements Initializable {
 		reparaciones = FXCollections.observableArrayList(listaReparaciones);
 		añadirFilasReparaciones(reparaciones);
 	}
-
+	
+	/**
+	 * Metodo que ordena alfabeticamente las piezas
+	 * @param event
+	 */
 	@FXML
 	void ordenPieza(MouseEvent event) {
 		tablaReparaciones.getItems().clear();

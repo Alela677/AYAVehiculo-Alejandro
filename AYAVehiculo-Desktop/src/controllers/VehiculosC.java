@@ -33,7 +33,12 @@ public class VehiculosC {
 
 	@FXML
 	private Label vehiculoPrecio;
-
+	
+	/**
+	 * Metodo que recibe objetos vehiculos de una lista y muestra los datos de los vehiculos 
+	 * en su campo pertinente
+	 * @param vehiculo
+	 */
 	public void setDatos(Vehiculo vehiculo) {
 		DecimalFormat formatea = new DecimalFormat("###,###.##");
 		vehiculoMarca.setText(vehiculo.getMarca());

@@ -14,6 +14,10 @@ import javax.imageio.ImageIO;
 public class GuardarImagen {
 
 	
+	/**
+	 * Metodo que lee el fichero de imagen en bytes y escribe un nuevo fichero en la ruta indicada 
+	 * @param fichero
+	 */
 	public static void leerImagen(File fichero) {
 
 		try {

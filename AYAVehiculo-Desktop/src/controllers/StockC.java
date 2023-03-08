@@ -28,10 +28,12 @@ import models.Vehiculo;
 import utils.GridpanelVehiculos;
 
 public class StockC implements Initializable {
-
+	
+	// Sesion de hibernate con la base de datos
 	private Session sesion = HibernateUtil.getSession();
+	// Gestion de los vehiculos con la base de datos
 	VehiculoDAO gestorVehiculo = new VehiculoDAO(sesion);
-
+	
 	@SuppressWarnings("unused")
 	private VehiculosC controlador;
 	private GridPane nuevoGrid;
@@ -62,7 +64,12 @@ public class StockC implements Initializable {
 
 	@FXML
 	private ComboBox<String> comboColor;
-
+	
+	/**
+	 * Metodo que busca los vehiculos por color
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void buscarPorColor(ActionEvent event) throws IOException {
 		limpiarLista();
@@ -72,7 +79,12 @@ public class StockC implements Initializable {
 		borderPaneStock.setCenter(nuevoGrid);
 
 	}
-
+	
+	/**
+	 * Metodo que busca lso vehiculos por marca
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void buscarPorMarca(ActionEvent event) throws IOException {
 		limpiarLista();
@@ -81,7 +93,12 @@ public class StockC implements Initializable {
 		nuevoGrid = grid.crearGridPane(columna, fila, paneles);
 		borderPaneStock.setCenter(nuevoGrid);
 	}
-
+	
+	/**
+	 * Metodo que busca vehiculos por modelo
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void buscarporModelo(ActionEvent event) throws IOException {
 		limpiarLista();
@@ -90,7 +107,12 @@ public class StockC implements Initializable {
 		nuevoGrid = grid.crearGridPane(columna, fila, paneles);
 		borderPaneStock.setCenter(nuevoGrid);
 	}
-
+	
+	/**
+	 * Metodo que busca vehiculos por precio 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void verVehiculosEntre(ActionEvent event) throws IOException {
 		// Antes de generar los nuevos vehiculos hay que limpiar ambas listas
@@ -102,7 +124,12 @@ public class StockC implements Initializable {
 		nuevoGrid = grid.crearGridPane(columna, fila, paneles);
 		borderPaneStock.setCenter(nuevoGrid);
 	}
-
+	
+	/**
+	 * Metodo que busca vehiculos por precio mayor de 50K
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void verVehiculosMasCincuenta(ActionEvent event) throws IOException {
 		// Antes de generar los nuevos vehiculos hay que limpiar ambas listas
@@ -115,7 +142,12 @@ public class StockC implements Initializable {
 		nuevoGrid = grid.crearGridPane(columna, fila, paneles);
 		borderPaneStock.setCenter(nuevoGrid);
 	}
-
+	
+	/**
+	 * Metodo que busca vehiculos menor de 20K
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void verVehiculosMenosVeinte(ActionEvent event) throws IOException {
 		// Antes de generar los nuevos vehiculos hay que limpiar ambas listas
@@ -127,28 +159,40 @@ public class StockC implements Initializable {
 		nuevoGrid = grid.crearGridPane(columna, fila, paneles);
 		borderPaneStock.setCenter(nuevoGrid);
 	}
-
+	
+	/**
+	 * Metodo que rellena el combobox con las marcas
+	 */
 	private void rellenarCamposMarca() {
 		List<String> cargos = gestorVehiculo.traerValoresColumnas("marca");
 		cargos = cargos.stream().distinct().collect(Collectors.toList());
 		ObservableList<String> items = FXCollections.observableArrayList(cargos);
 		comboMarca.setItems(items);
 	}
-
+	
+	/**
+	 * Metodo que rellena el combobox con los modelos
+	 */
 	private void rellenarCamposModelo() {
 		List<String> modelo = gestorVehiculo.traerValoresColumnas("modelo");
 		modelo = modelo.stream().distinct().collect(Collectors.toList());
 		ObservableList<String> items = FXCollections.observableArrayList(modelo);
 		comboModelo.setItems(items);
 	}
-
+	
+	/**
+	 * Metodo que rellena el combobox con el color
+	 */
 	private void rellenarCamposColor() {
 		List<String> colores = gestorVehiculo.traerValoresColumnas("color");
 		colores = colores.stream().distinct().collect(Collectors.toList());
 		ObservableList<String> items = FXCollections.observableArrayList(colores);
 		comboColor.setItems(items);
 	}
-
+	
+	/**
+	 * Metodo que limpia la listas 
+	 */
 	private void limpiarLista() {
 		paneles.clear();
 		vehiculos.clear();

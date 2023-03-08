@@ -12,18 +12,22 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+	/**
+	 * Main que ejecuta la aplicacion 
+	 */
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-
+		
+		// Carga la vista del login
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/LoginView.fxml"));
 		Parent root = loader.load();
 		Scene escena = new Scene(root);
 		primaryStage.setScene(escena);
-		LoginController controlador = loader.getController();
+		LoginController controlador = loader.getController();// Controlador de la vista del login
 		controlador.setStage(primaryStage);
-		primaryStage.getIcons().add(new Image("images/logo.PNG"));
-		primaryStage.setTitle("AYA Vehiculos");
-		primaryStage.show();
+		primaryStage.getIcons().add(new Image("images/logo.PNG"));// Icono de la ventana de la aplicacion
+		primaryStage.setTitle("AYA Vehiculos"); // Titulo de la ventana de la aplicacion
+		primaryStage.show();// Muestra la vista
 
 	}
 

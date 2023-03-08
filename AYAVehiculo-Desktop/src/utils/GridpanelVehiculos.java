@@ -12,7 +12,16 @@ import javafx.scene.layout.GridPane;
 import models.Vehiculo;
 
 public class GridpanelVehiculos {
-
+	
+	/**
+	 * Metodo que genera un gridpane con las filas y las columnas y una lista de
+	 * paneles para mostrar
+	 * 
+	 * @param columna
+	 * @param fila
+	 * @param paneles
+	 * @return
+	 */
 	public GridPane crearGridPane(int columna, int fila, List<AnchorPane> paneles) {
 
 		// Creamos un nuevo gridpane
@@ -38,7 +47,14 @@ public class GridpanelVehiculos {
 
 		return nuevo;
 	}
-
+	/**
+	 * Metodo que crea los paneles necesarios de una lista de vehiculos que
+	 * recogemos de la base de datos
+	 * 
+	 * @param empleadosList
+	 * @return
+	 * @throws IOException
+	 */	
 	public List<AnchorPane> crearPaneles(List<Vehiculo> vehiculosList) throws IOException {
 		List<AnchorPane> paneles = new ArrayList<AnchorPane>();
 		// Recorremos la lista de vehiculos

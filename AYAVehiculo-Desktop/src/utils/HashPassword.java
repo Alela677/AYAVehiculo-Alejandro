@@ -9,6 +9,11 @@ public class HashPassword {
 		
 	}
 	
+	/**
+	 * Metodo que cifra la contraseña de los usuarios con el protocolo MD5
+	 * @param password
+	 * @return
+	 */
 	public static String convertirSHA256(String password) {
 		MessageDigest md = null;
 		try {

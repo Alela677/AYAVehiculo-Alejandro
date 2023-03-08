@@ -1,0 +1,6 @@
+Nacho dejo dos versiones por si lo miras en monitor grande o en portatil para que no tengas problemas 
+
+ 	 - El proyecto que esta comentado es AYAVehiculos-Desktop 
+	 - Los DAOS no los he comentado por que los nombre ya son muy explicitos 
+	 - Hay cierta parte de la base de datos como por ejemplo en reparaciones hay ciertos campos redundates 
+	   con los que no estoi de acuerdo pero los puso Ana dice que lo ve mejor 

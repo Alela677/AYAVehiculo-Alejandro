@@ -55,7 +55,12 @@ public class PrincipalC {
 
 	@FXML
 	private Button buttonApagar;
-
+	
+	/**
+	 * Metodo que muestra la vista stock
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	void mostrarStock(ActionEvent event) throws Exception {
 
@@ -63,7 +68,15 @@ public class PrincipalC {
 		AnchorPane root = loader.load();
 		borderPane.setCenter(root);
 	}
-
+	
+	/**
+	 * Metodo que controla la vista vista del login y recibe parametros del login
+	 * @param stage
+	 * @param loginController
+	 * @param usuario
+	 * @param border
+	 * @throws IOException
+	 */
 	public void init(Stage stage, LoginController loginController, String usuario, BorderPane border)
 			throws IOException {
 		this.stage = stage;
@@ -75,7 +88,11 @@ public class PrincipalC {
 		stage.setTitle("AYA Vehiculos");
 		escenaInicio();
 	}
-
+	
+	/**
+	 * Metodoq que carga la escena inicio
+	 * @throws IOException
+	 */
 	public void escenaInicio() throws IOException {
 		FXMLLoader load = new FXMLLoader(getClass().getResource("/Views/ScenaInicio.fxml"));
 		AnchorPane root = load.load();
@@ -83,12 +100,22 @@ public class PrincipalC {
 
 	}
 
+	/**
+	 * Metodo que muestra la vista inicio
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void vistaInicio(MouseEvent event) throws IOException {
 		escenaInicio();
 		borderPane.setLeft(null);
 	}
-
+	
+	/**
+	 * Metodo que carga la vista empleados
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void mostrarVistaVerEmpleados(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/SceneVerEmpleados.fxml"));
@@ -96,36 +123,56 @@ public class PrincipalC {
 		borderPane.setCenter(root);
 
 	}
-
+	
+	/**
+	 * Metodo que muesta la vista empleados
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void mostrasCrearEmpleado(ActionEvent event) throws IOException {
 		escenaCrearEmpledos();
 	}
-
+	
+	/**
+	 * Metodo que carga la vista crear empleados
+	 * @throws IOException
+	 */
 	private void escenaCrearEmpledos() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/SceneCrearEmpleado.fxml"));
 		AnchorPane root = loader.load();
 		borderPane.setCenter(root);
 	}
-
+	
+	/**
+	 * Metodo que carga la vista resumen de ventas
+	 * @throws IOException
+	 */
 	private void escenaResumenVentas() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/SceneResumenVentas.fxml"));
 		AnchorPane root = loader.load();
 		borderPane.setCenter(root);
 	}
-
+	
+	// Metodo que muestra la vista resumen de ventas
 	@FXML
 	void escenaResumenVentas(ActionEvent event) throws IOException {
 		escenaResumenVentas();
 	}
-
+	
+	// Metodo que carga la vista ganancia total
 	@FXML
 	void verGanancias(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/SceneGanaciaTotal.fxml"));
 		AnchorPane root = loader.load();
 		borderPane.setCenter(root);
 	}
-
+	
+	/**
+	 * Metodo que carga la vista reparaciones
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void verReparaciones(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/SceneReparaciones.fxml"));
